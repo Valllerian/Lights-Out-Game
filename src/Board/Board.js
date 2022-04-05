@@ -73,7 +73,7 @@ const Board = () =>  {
   /** Render game board or winning message. */
 
  return (
-   <div></div>
+   <div><Cell /></div>
  )
 
     // if the game is won, just show a winning msg & render nothing else

@@ -4,14 +4,14 @@ import "./App.css";
 
 /** Simple app that just shows the LightsOut game. */
 
-class App extends Component {
-  render() {
-    return (
-      <div className='App'>
-        <Board />
-      </div>
-    );
-  }
+
+
+function App() {
+  return (
+    <div className="App flex h-screen justify-center items-center">
+      <Board />
+    </div>
+  );
 }
 
 export default App;

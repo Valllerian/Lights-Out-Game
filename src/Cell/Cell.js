@@ -1,6 +1,5 @@
-import React, {Component} from 'react'
-import "./Cell.css"
-
+import React, { useState } from "react";
+import "./Cell.css";
 
 /** A single cell on the board.
  *
@@ -16,6 +15,7 @@ import "./Cell.css"
  **/
 
 const Cell = () => {
+  const [isLit, setIsLit] = useState(false);
   // constructor(props) {
   //   super(props);
   //   this.handleClick = this.handleClick.bind(this);
@@ -23,15 +23,11 @@ const Cell = () => {
 
   const handleClick = (evt) => {
     // call up to the board to flip cells around this cell
-    this.props.flipCellsAroundMe();
-  }
+    // this.props.flipCellsAroundMe();
+  };
 
-  let classes = "Cell" + (this.props.isLit ? " Cell-lit" : "");
-  return (
-    <td className={classes} onClick={this.handleClick} />
-  ) 
-  
-}
+  let classes = "Cell" + (isLit ? " Cell-lit" : "");
+  return <td className={classes} onClick={handleClick} />;
+};
 
-
-export default Cell
+export default Cell;
