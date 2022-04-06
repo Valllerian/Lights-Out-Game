@@ -29,39 +29,37 @@ import "./Board.css";
  **/
 
 const Board = () => {
-const [columns, setColumns] = useState(8)
-const [rows, setRows] = useState(8)
-const [hasWon, setHasWon] = useState(false)
-const [board, setBoard] = useState([])
+  const [columns, setColumns] = useState(8);
+  const [rows, setRows] = useState(8);
+  const [hasWon, setHasWon] = useState(false);
+  const [board, setBoard] = useState([]);
 
-useEffect(() => {
-  createRows()
-}, [])
+  useEffect(() => {
+    createRows();
+  }, []);
 
+  const createColumns = () => {
+    var result = [];
+    var states = [true, false];
+    for (let i = 0; i < columns; i++) {
+      result.push(states[Math.floor(Math.random() * 2)]);
+    }
+    return result;
+  };
 
-const createColumns = () => {
-  var result = [];
-  var states = [true, false]
-  for(let i = 0; i < columns; i ++){
-    result.push(states[Math.floor(Math.random()*2)])
-  }
-  return result
-};
+  const createRows = () => {
+    var fullResult = [];
+    for (let i = 0; i < rows; i++) {
+      fullResult.push(createColumns());
+    }
+    setBoard(fullResult);
+  };
 
-const createRows = () => {
-  var fullResult = [];
-  for(let i = 0; i < rows; i ++){
-    fullResult.push(createColumns())
-  }
-  setBoard(fullResult)
-  
-};
-
-const handleClick = (e) => {
-e.preventDefault();
-createRows()
-console.log(board)
-}
+  const handleClick = (e) => {
+    e.preventDefault();
+    createRows();
+    console.log(board);
+  };
 
   /** create a board nrows high/ncols wide, each cell randomly lit or unlit */
 
@@ -96,10 +94,29 @@ console.log(board)
   /** Render game board or winning message. */
 
   return (
-
-    
     <div>
-      <button onClick={(e) => handleClick(e)}>New Board</button>
+      <div>
+        <div className="inline-grid grid-cols-8 ">
+          {board.map((row) => {
+            return (
+              <div key={row.length * Math.floor(Math.random() * 6666)}>
+                {row.map((element) => {
+                  return (
+                    <div key={Math.floor(Math.random() * 6666)}>
+                      {" "}
+                      <Cell isLit={element} />
+                      {element}
+                    </div>
+                  );
+                })}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      <div>
+        <button onClick={(e) => handleClick(e)}>New Board</button>
+      </div>
     </div>
   );
 

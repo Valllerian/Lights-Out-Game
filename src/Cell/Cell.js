@@ -14,19 +14,22 @@ import "./Cell.css";
  *
  **/
 
-const Cell = () => {
-  const [isLit, setIsLit] = useState(false);
+const Cell = (props) => {
+  // const [isLit, setIsLit] = useState(false);
+  let Lit = props.isLit
   // constructor(props) {
   //   super(props);
   //   this.handleClick = this.handleClick.bind(this);
   // }
 
-  const handleClick = (evt) => {
+  const handleClick = () => {
     // call up to the board to flip cells around this cell
     // this.props.flipCellsAroundMe();
+    
+    console.log(Lit)
   };
 
-  let classes = "Cell" + (isLit ? " Cell-lit" : "");
+  let classes = "Cell" + (Lit ? " Cell-lit" : "");
   return <td className={classes} onClick={handleClick} />;
 };
 
