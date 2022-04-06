@@ -1,7 +1,6 @@
-import React, {Component} from "react";
+import React, { useState } from "react";
 import Cell from "../Cell/Cell";
-import './Board.css';
-
+import "./Board.css";
 
 /** Game board of Lights out.
  *
@@ -29,21 +28,36 @@ import './Board.css';
  *
  **/
 
-const Board = () =>  {
+const Board = () => {
+const [columns, setColumns] = useState(8)
+const [rows, setRows] = useState(8)
+const [hasWon, setHasWon] = useState(false)
 
-  // constructor(props) {
-  //   super(props);
 
-  //   // TODO: set initial state
-  // }
+const createColumns = () => {
+  var result = [];
+  var states = [true, false]
+  for(let i = 0; i < columns; i ++){
+    result.push(states[Math.floor(Math.random()*2)])
+  }
+  return result
+};
+
+const createRows = () => {
+  var fullResult = [];
+  for(let i = 0; i < rows; i ++){
+    fullResult.push(createColumns())
+  }
+  return fullResult
+};
 
   /** create a board nrows high/ncols wide, each cell randomly lit or unlit */
 
- const createBoard = () => {
+  const createBoard = () => {
     let board = [];
     // TODO: create array-of-arrays of true/false values
-    return board
-  }
+    return board;
+  };
 
   /** handle changing a cell: update board & determine if winner */
 
@@ -52,14 +66,12 @@ const Board = () =>  {
     // let board = this.state.board;
     // let [y, x] = coord.split("-").map(Number);
 
-
     const flipCell = (y, x) => {
       // if this coord is actually on board, flip it
-
       // if (x >= 0 && x < ncols && y >= 0 && y < nrows) {
       //   board[y][x] = !board[y][x];
       // }
-    }
+    };
 
     // TODO: flip this cell and the cells around it
 
@@ -67,24 +79,25 @@ const Board = () =>  {
     // TODO: determine is the game has been won
 
     // this.setState({board, hasWon});
-  }
-
+  };
 
   /** Render game board or winning message. */
 
- return (
-   <div><Cell /></div>
- )
+  return (
+    <div>
+      <div>
+        <Cell />
+      </div>
+    </div>
+  );
 
-    // if the game is won, just show a winning msg & render nothing else
+  // if the game is won, just show a winning msg & render nothing else
 
-    // TODO
+  // TODO
 
-    // make table board
+  // make table board
 
-    // TODO
-  
-}
-
+  // TODO
+};
 
 export default Board;
