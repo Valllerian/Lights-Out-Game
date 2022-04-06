@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Cell from "../Cell/Cell";
 import "./Board.css";
 
@@ -32,6 +32,11 @@ const Board = () => {
 const [columns, setColumns] = useState(8)
 const [rows, setRows] = useState(8)
 const [hasWon, setHasWon] = useState(false)
+const [board, setBoard] = useState([])
+
+useEffect(() => {
+  createRows()
+}, [])
 
 
 const createColumns = () => {
@@ -48,8 +53,15 @@ const createRows = () => {
   for(let i = 0; i < rows; i ++){
     fullResult.push(createColumns())
   }
-  return fullResult
+  setBoard(fullResult)
+  
 };
+
+const handleClick = (e) => {
+e.preventDefault();
+createRows()
+console.log(board)
+}
 
   /** create a board nrows high/ncols wide, each cell randomly lit or unlit */
 
@@ -84,10 +96,10 @@ const createRows = () => {
   /** Render game board or winning message. */
 
   return (
+
+    
     <div>
-      <div>
-        <Cell />
-      </div>
+      <button onClick={(e) => handleClick(e)}>New Board</button>
     </div>
   );
 
