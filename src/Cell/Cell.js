@@ -16,7 +16,7 @@ import "./Cell.css";
 
 const Cell = (props) => {
   // const [isLit, setIsLit] = useState(false);
-  let Lit = props.isLit
+  let Lit = props.isLit;
   // constructor(props) {
   //   super(props);
   //   this.handleClick = this.handleClick.bind(this);
@@ -25,12 +25,12 @@ const Cell = (props) => {
   const handleClick = () => {
     // call up to the board to flip cells around this cell
     // this.props.flipCellsAroundMe();
-    
-    console.log(Lit)
+
+    console.log(Lit);
   };
 
   let classes = "Cell" + (Lit ? " Cell-lit" : "");
-  return <td className={classes} onClick={handleClick} />;
+  return <div className={classes} onClick={handleClick} />;
 };
 
 export default Cell;

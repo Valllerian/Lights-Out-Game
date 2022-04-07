@@ -58,7 +58,6 @@ const Board = () => {
   const handleClick = (e) => {
     e.preventDefault();
     createRows();
-    console.log(board);
   };
 
   /** create a board nrows high/ncols wide, each cell randomly lit or unlit */
@@ -99,10 +98,10 @@ const Board = () => {
         <div className="inline-grid grid-cols-8 ">
           {board.map((row) => {
             return (
-              <div key={row.length * Math.floor(Math.random() * 6666)}>
+              <div key={row.length * Math.floor(Math.random() * 999999999)}>
                 {row.map((element) => {
                   return (
-                    <div key={Math.floor(Math.random() * 6666)}>
+                    <div key={Math.floor(Math.random() * 999999999)}>
                       {" "}
                       <Cell isLit={element} />
                       {element}
