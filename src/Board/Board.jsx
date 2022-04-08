@@ -60,15 +60,6 @@ const Board = () => {
     createRows();
   };
 
-  /** create a board nrows high/ncols wide, each cell randomly lit or unlit */
-
-  const createBoard = () => {
-    let board = [];
-    // TODO: create array-of-arrays of true/false values
-    return board;
-  };
-
-  /** handle changing a cell: update board & determine if winner */
 
   const flipCellsAround = (coord) => {
     // let {ncols, nrows} = this.props;
@@ -89,8 +80,6 @@ const Board = () => {
 
     // this.setState({board, hasWon});
   };
-
-  /** Render game board or winning message. */
 
   return (
     <div>
@@ -118,14 +107,6 @@ const Board = () => {
       </div>
     </div>
   );
-
-  // if the game is won, just show a winning msg & render nothing else
-
-  // TODO
-
-  // make table board
-
-  // TODO
 };
 
 export default Board;
