@@ -15,17 +15,8 @@ import "./Cell.css";
  **/
 
 const Cell = (props) => {
-  // const [isLit, setIsLit] = useState(false);
   let Lit = props.isLit;
-  // constructor(props) {
-  //   super(props);
-  //   this.handleClick = this.handleClick.bind(this);
-  // }
-
   const handleClick = () => {
-    // call up to the board to flip cells around this cell
-    // this.props.flipCellsAroundMe();
-
     console.log(Lit);
   };
 
